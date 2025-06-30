@@ -28,7 +28,7 @@ dotenv.config();
 const app = express();
 const server = createServer(app);
 const allowedOrigins = [
-  process.env.FRONTEND_URL || "http://localhost:5173",
+  process.env.FRONTEND_URL || "http://localhost:5173" || "https://zp1v56uxy8rdx5ypatb0ockcb9tr6a-oci3-ugtgdc7j--5173--6e337437.local-credentialless.webcontainer-api.io",
   process.env.CHATBOT_URL || "http://localhost:5174",
 ];
 
