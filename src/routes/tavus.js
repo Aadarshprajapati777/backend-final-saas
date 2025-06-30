@@ -102,6 +102,7 @@ Remember: You are representing ${chatbot.profiles.company_name} and should provi
         },
         body: JSON.stringify({
           replica_id: process.env.TAVUS_REPLICA_ID,
+          persona_id: process.env.TAVUS_PERSONA_ID,
           conversational_context: conversationalContext,
           properties: {
             max_call_duration: max_duration,
