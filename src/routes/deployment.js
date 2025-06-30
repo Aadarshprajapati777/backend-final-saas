@@ -28,7 +28,7 @@ router.get('/:chatbotId', async (req, res) => {
       chatbot_id: chatbot.id,
       public_url: chatbot.public_url,
       embed_code: generateEmbedCode(chatbot),
-      api_endpoint: `${req.protocol}://${req.get('host')}/api/chat/${chatbot.id}`,
+      api_endpoint: `${process.env.CHATBOT_URL}/api/chat/${chatbot.id}`,
       api_key: chatbot.api_key,
       status: chatbot.status,
       custom_domain: chatbot.custom_domain,
@@ -207,7 +207,7 @@ router.post('/:chatbotId/test', async (req, res) => {
     }
 
     // Test the chatbot by sending a test message
-    const testResponse = await fetch(`${req.protocol}://${req.get('host')}/api/chat/${chatbotId}`, {
+    const testResponse = await fetch(`${process.env.CHATBOT_URL}/api/chat/${chatbotId}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -229,7 +229,7 @@ router.post('/:chatbotId/test', async (req, res) => {
       response_time: Date.now() - req.startTime,
       tested_at: new Date().toISOString(),
       public_url: chatbot.public_url,
-      api_endpoint: `${req.protocol}://${req.get('host')}/api/chat/${chatbotId}`
+      api_endpoint: `${process.env.CHATBOT_URL}/api/chat/${chatbotId}`
     };
 
     logger.info(`Deployment test for chatbot ${chatbotId}: ${deploymentTest.status}`);
