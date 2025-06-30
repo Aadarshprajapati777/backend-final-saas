@@ -34,7 +34,7 @@ const allowedOrigins = [
 
 const io = new Server(server, {
   cors: {
-    origin: allowedOrigins,
+    origin: "*",
     methods: ["GET", "POST"]
   }
 });
@@ -48,7 +48,7 @@ app.use(compression());
 
 // CORS configuration
 app.use(cors({
-  origin: allowedOrigins,
+  origin: "*",
   credentials: true
 }));
 
